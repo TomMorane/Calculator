@@ -43,12 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
   equal.addEventListener('click', function () {
     equalCalculation();
     previousShow.textContent = '';
-
-    if (previousValue.length <= 7) {
-      currentShow.textContent = previousValue;
-    } else {
-      currentShow.textContent = previousValue.slice(0, 5) + '...';
-    }
+    currentShow.textContent = previousValue;
   });
 });
 
@@ -72,9 +67,8 @@ function handleOperator(op) {
 function equalCalculation() {
   previousValue = Number(previousValue);
   currentValue = Number(currentValue);
-  //   operator = operator.replace(/(\r\n|\n|\r)/gm, '');
-  operator = operator.toString();
-  operator = 'x';
+  operator = operator.replace(/\s+/g, ' ').trim();
+  //   operator = 'x';
   if (operator === '+') {
     previousValue += currentValue;
   } else if (operator === '-') {
