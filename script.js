@@ -1,16 +1,18 @@
+// Begining with the value for nothing
 let previousValue = '';
 let currentValue = '';
-let currentOperator = '';
+let operator = '';
 
 document.addEventListener('DOMContentLoaded', function () {
-  currentShow = document.querySelector('.current');
-  previousShow = document.querySelector('.previous');
-  clearSelection = document.querySelector('.clear');
-  operators = document.querySelectorAll('.operator');
-  numbers = document.querySelectorAll('.number');
-  equal = document.querySelector('.equal');
-  dot = document.querySelector('.dot');
+  // selecting every html pieces into the js
+  let currentShow = document.querySelector('.current');
+  let previousShow = document.querySelector('.previous');
+  let clearSelection = document.querySelector('.clear');
+  let operators = document.querySelectorAll('.operator');
+  let numbers = document.querySelectorAll('.number');
+  let equal = document.querySelector('.equal');
 
+  // Selecting the numbers 0 to 9 and stack it
   numbers.forEach((number) =>
     number.addEventListener('click', function (e) {
       handleNumber(e.target.textContent);
@@ -18,36 +20,80 @@ document.addEventListener('DOMContentLoaded', function () {
     })
   );
 
+  // Deleting and reseting everything
   clearSelection.addEventListener('click', function (e) {
     previousValue = '';
     currentValue = '';
+    operator = '';
     currentShow.textContent = currentValue;
     previousShow.textContent = previousValue;
   });
 
-  operators.forEach((ope) =>
-    ope.addEventListener('click', function (e) {
+  // Selecting the +, -, /, X and stacking it
+  operators.forEach((op) =>
+    op.addEventListener('click', function (e) {
       handleOperator(e.target.textContent);
+
       previousShow.textContent = previousValue + ' ' + operator;
       currentShow.textContent = currentValue;
     })
   );
+
+  // Trying to show the result pressing =
+  equal.addEventListener('click', function () {
+    equalCalculation();
+    previousShow.textContent = '';
+
+    if (previousValue.length <= 7) {
+      currentShow.textContent = previousValue;
+    } else {
+      currentShow.textContent = previousValue.slice(0, 5) + '...';
+    }
+  });
 });
 
-function handleOperator(opera) {
-  operator = opera;
-  previousValue = currentValue;
-  currentValue = '';
-}
-
+// function math about the number, putin maxLength at most
 function handleNumber(num) {
   let maxLength = 7;
   num = num.replace(/[^0-9]/g, '');
   if (currentValue.length < maxLength) {
     currentValue += num;
-  } else {
-    console.log('bug');
   }
+}
+
+// function math about stacking which operator choosed
+function handleOperator(op) {
+  operator = op;
+  previousValue = currentValue;
+  currentValue = '';
+}
+
+// function equal showing a result depending on the operator
+function equalCalculation() {
+  previousValue = Number(previousValue);
+  currentValue = Number(currentValue);
+  //   operator = operator.replace(/(\r\n|\n|\r)/gm, '');
+  operator = operator.toString();
+  operator = 'x';
+  if (operator === '+') {
+    previousValue += currentValue;
+  } else if (operator === '-') {
+    previousValue -= currentValue;
+  } else if (operator === 'x') {
+    previousValue *= currentValue;
+  } else {
+    previousValue /= currentValue;
+  }
+
+  // Putting the answer back to a string and deleting the high amount of number
+  previousValue = highAmountNumber(previousValue);
+  previousValue = previousValue.toString();
+  currentValue = previousValue.toString();
+}
+
+// function math of deleting high amount of number
+function highAmountNumber(num) {
+  return Math.round(num * 1000) / 1000;
 }
 
 // }
@@ -92,3 +138,9 @@ function handleNumber(num) {
 // 13 Je veux ajouter le bouton clear
 
 // 14 Je veux ajouter le bouton = et calculer les opérations.
+
+// 15 FCKING BUG with operator
+
+// 16 correct for the high amount of number (need transform into number)
+
+// 17 correct the length of the result
