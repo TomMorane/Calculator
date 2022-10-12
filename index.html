@@ -5,14 +5,201 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="script.js" defer></script>
-    <title>Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        @import url(https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.min.css);
+    </style>
 </head>
+<title>Calculator</title>
 
 <body>
 
-    <h1 class="text-2xl"> hi</h1>
+    <!-- calculator line  -->
+    <div class="min-w-screen min-h-screen bg-gray-100 flex items-center justify-center px-5 py-5">
+        <div class="w-full mx-auto rounded-xl bg-gray-100 shadow-xl text-gray-800 relative overflow-hidden"
+            style="max-width:300px">
+
+            <!-- end calculator line  -->
+
+
+
+            <!-- Screen Previous and current -->
+            <div class="w-full h-40 bg-gradient-to-b from-gray-800 to-gray-700 flex flex-col items-end text-right">
+                <!-- previous value -->
+                <div class="previous w-full py-4 px-6 text-3xl text-white font-thin"></div>
+                <!-- previous value -->
+                <!-- current value -->
+                <div class="current  w-full  px-6 text-5xl text-white font-thin"></div>
+                <!-- current value -->
+            </div>
+            <!-- end Screen Previous and current -->
+
+
+
+            <!-- C and / line -->
+            <div class="w-full bg-gradient-to-b from-indigo-400 to-indigo-500">
+                <div class="flex w-full justify-center">
+                    <div class="w-3/4 border-r border-b border-indigo-400">
+                        <!-- C clear button -->
+                        <button
+                            class="clear w-full h-16 outline-none focus:outline-none hover:bg-indigo-700 hover:bg-opacity-20 text-white text-opacity-50 text-xl font-light">
+                            C</button>
+                        <!-- C clear button -->
+                    </div>
+
+                    <div class="w-1/4 border-r border-b border-indigo-400">
+                        <!-- / operator button -->
+                        <button
+                            class="operator w-full h-16 outline-none focus:outline-none bg-indigo-700 bg-opacity-10 hover:bg-opacity-20 text-white text-2xl font-light">
+                            ÷</button>
+                        <!-- / operator button -->
+                    </div>
+                </div>
+                <!-- end C and / line -->
+
+
+
+                <!-- 7 8 9 X line -->
+                <div class="flex w-full">
+                    <div class="w-1/4 border-r border-b border-indigo-400">
+                        <!-- 7 number button -->
+                        <button
+                            class="number w-full h-16 outline-none focus:outline-none hover:bg-indigo-700 hover:bg-opacity-20 text-white text-xl font-light">
+                            7</button>
+                        <!-- 7 number button -->
+                    </div>
+                    <div class="w-1/4 border-r border-b border-indigo-400">
+                        <!-- 8 number button -->
+                        <button
+                            class="number w-full h-16 outline-none focus:outline-none hover:bg-indigo-700 hover:bg-opacity-20 text-white text-xl font-light">
+                            8</button>
+                        <!-- 8 number button -->
+                    </div>
+                    <div class="w-1/4 border-r border-b border-indigo-400">
+                        <!-- 9 number button -->
+                        <button
+                            class="number w-full h-16 outline-none focus:outline-none hover:bg-indigo-700 hover:bg-opacity-20 text-white text-xl font-light">
+                            9</button>
+                        <!-- 9 number button -->
+                    </div>
+                    <div class="w-1/4 border-r border-b border-indigo-400">
+                        <!-- x operator button -->
+                        <button
+                            class="operator w-full h-16 outline-none focus:outline-none bg-indigo-700 bg-opacity-10 hover:bg-opacity-20 text-white text-xl font-light">
+                            ⨉</button>
+                        <!-- x operator button -->
+                    </div>
+                </div>
+                <!-- end 7 8 9 X line -->
+
+
+
+                <!-- 4 5 6 - line -->
+                <div class="flex w-full">
+                    <div class="w-1/4 border-r border-b border-indigo-400">
+                        <!-- 4 number button -->
+                        <button
+                            class="number w-full h-16 outline-none focus:outline-none hover:bg-indigo-700 hover:bg-opacity-20 text-white text-xl font-light">
+                            4</button>
+                        <!-- 4 number button -->
+                    </div>
+                    <div class="w-1/4 border-r border-b border-indigo-400">
+                        <!-- 5 number button -->
+                        <button
+                            class="number w-full h-16 outline-none focus:outline-none hover:bg-indigo-700 hover:bg-opacity-20 text-white text-xl font-light">
+                            5</button>
+                        <!-- 5 number button -->
+                    </div>
+                    <div class="w-1/4 border-r border-b border-indigo-400">
+                        <!-- 6 number button -->
+                        <button
+                            class="number w-full h-16 outline-none focus:outline-none hover:bg-indigo-700 hover:bg-opacity-20 text-white text-xl font-light">
+                            6</button>
+                        <!-- 6 number button -->
+                    </div>
+                    <div class="w-1/4 border-r border-b border-indigo-400">
+                        <!-- - operator button -->
+                        <button
+                            class="operator w-full h-16 outline-none focus:outline-none bg-indigo-700 bg-opacity-10 hover:bg-opacity-20 text-white text-xl font-light">
+                            -</button>
+                        <!-- - operator button -->
+                    </div>
+                </div>
+
+                <!-- end 4 5 6 - line -->
+
+
+
+                <!-- 1 2 3 + line -->
+                <div class="flex w-full">
+                    <div class="w-1/4 border-r border-b border-indigo-400">
+                        <!-- 1 number button -->
+                        <button
+                            class="number w-full h-16 outline-none focus:outline-none hover:bg-indigo-700 hover:bg-opacity-20 text-white text-xl font-light">
+                            1</button>
+                        <!-- 1 number button -->
+                    </div>
+                    <div class="w-1/4 border-r border-b border-indigo-400">
+                        <!-- 2 number button -->
+                        <button
+                            class="number w-full h-16 outline-none focus:outline-none hover:bg-indigo-700 hover:bg-opacity-20 text-white text-xl font-light">
+                            2</button>
+                        <!-- 2 number button -->
+                    </div>
+                    <div class="w-1/4 border-r border-b border-indigo-400">
+                        <!-- 3 number button -->
+                        <button
+                            class="number w-full h-16 outline-none focus:outline-none hover:bg-indigo-700 hover:bg-opacity-20 text-white text-xl font-light">
+                            3</button>
+                        <!-- 3 number button -->
+                    </div>
+                    <div class="w-1/4 border-r border-b border-indigo-400">
+                        <!-- + operator button -->
+                        <button
+                            class="operator w-full h-16 outline-none focus:outline-none bg-indigo-700 bg-opacity-10 hover:bg-opacity-20 text-white text-xl font-light">
+                            +</button>
+                        <!-- + operator number button -->
+                    </div>
+                </div>
+
+                <!-- end 1 2 3 + line -->
+
+
+
+                <!-- 0 . = line -->
+                <div class=" flex w-full">
+                    <div class="w-1/4 border-r border-indigo-400">
+                        <!-- 0 number button -->
+                        <button
+                            class="number w-full h-16 outline-none focus:outline-none hover:bg-indigo-700 hover:bg-opacity-20 text-white text-xl font-light">
+                            0</button>
+                        <!-- 0 number button -->
+                    </div>
+                    <div class="w-1/4 border-r border-indigo-400">
+                        <!--  . dot button -->
+                        <button
+                            class="dot w-full h-16 outline-none focus:outline-none hover:bg-indigo-700 hover:bg-opacity-20 text-white text-xl font-light">
+                            .</button>
+                        <!-- . dot button -->
+                    </div>
+                    <div class="w-2/4 border-r border-indigo-400">
+                        <!-- = equal button -->
+                        <button
+                            class="equal w-full h-16 outline-none focus:outline-none bg-indigo-700 bg-opacity-30 hover:bg-opacity-40 text-white text-xl font-light">
+                            =</button>
+                        <!-- = equal button -->
+                    </div>
+                </div>
+            </div>
+            <!-- end 0 . = line -->
+        </div>
+    </div>
+
+
 </body>
 
 </html>
